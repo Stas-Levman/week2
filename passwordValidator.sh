@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#This is a simple password validator written in Bash, it checks if a string argument passed along with the .sh file execution is passes criteria for a password.
+#This is a simple password validator written in Bash, it checks if a string argument passed along with the .sh file execution passes the criteria for a password.
 #Criteria for the password are: at least 10 characters long, must contain 1 upper case and 1 lower case letter, and at least one digit.
 
  
