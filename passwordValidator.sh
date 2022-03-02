@@ -1,17 +1,19 @@
 #!/bin/bash
 
-pass=$1
+#This is a simple password validator written in Bash, it checks if a string argument passed along with the .sh file execution is passes criteria for a password.
+#Criteria for the password are: at least 10 characters long, must contain 1 upper case and 1 lower case letter, and at least one digit.
 
-length=${#pass}
+ 
+pass=$1 #Password string we get from the user argument.
 
-valid=0
+valid=0 #Variable that is changed to 1 if criteria for the password is not met. 
 
 RED='\033[0;31m' #Red color
 GREEN='\033[0;32m' #Green color
 NC='\033[0m' #No Color
 
 
-#Checking if password contains at least 1 digit.
+#Checks if password contains at least 1 digit.
 function digitPresent {
     if [[ $pass =~ [1-9] ]]
     then
@@ -24,7 +26,7 @@ function digitPresent {
     fi
 }
 
-#Checking if password contains at least 1 lower case letter.
+#Checks if password contains at least 1 lower case letter.
 function lowerCasePresent {
     if [[ $pass =~ [a-z] ]]
     then
@@ -37,7 +39,7 @@ function lowerCasePresent {
     fi
 }
 
-#Checking if password contains at least 1 upper case letter.
+#Checks if password contains at least 1 upper case letter.
 function upperCasePresent {
     if [[ $pass =~ [A-Z] ]]
     then
@@ -50,7 +52,7 @@ function upperCasePresent {
     fi  
 }
 
-#Checking if password is at least 10 chars long.
+#Checks if password is at least 10 chars long.
 function lengthSufficient {
     if [[ $pass =~ .{10,} ]]
     then
@@ -63,7 +65,7 @@ function lengthSufficient {
     fi
 }
 
-#Checking for any special characters or spaces/new lines/tabs.
+#Checks for any special characters or spaces/new lines/tabs.
 function noSpacesOrSpecialChars {
     if [[ $pass =~ [[:punct:]] || $pass =~ [[:space:]] ]] 
     then
@@ -95,7 +97,7 @@ function checkPasswordStrength {
 }
 
 
-checkPasswordStrength;
+checkPasswordStrength
 
 
 
