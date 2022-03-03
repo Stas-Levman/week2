@@ -3,11 +3,14 @@
 #This is a simple password validator written in Bash, it checks if a string argument passed along with the .sh file execution passes the criteria for a password.
 #Criteria for the password are: at least 10 characters long, must contain 1 upper case and 1 lower case letter, and at least one digit.
 #The functions that check the string use regex in order to do so.
+#In this version added the option to use flag -f to instead specidy a path to a file containing the password.
 
 
 
 argument=$1
 getopts ":f:" option
+
+
 path="" #Variable that stores the password file path when using option -f.
 pass="" #Password that will be validated.
 valid=0 #Variable that is changed to 1 if criteria for the password is not met. 
@@ -21,7 +24,7 @@ NC='\033[0m' #No Color
 
 #Checks if password does not contain at least 1 digit.
 function digitPresent {
-    if ! [[ $pass =~ [1-9] ]]
+    if ! [[ $pass =~ [0-9] ]]
     then
         printf "${RED}Please include at least 1 digit in your password. ${NC}\n"
         valid=1
@@ -77,23 +80,21 @@ function checkPasswordStrength {
 #Checking if the argument accepted is an option or a password string.
 function checkIfOption {
     if [[ $argument =~ ^\-.$ ]]
-        then
-        printf "it's -f\n"
+    then
         if [ $option == "f" ]
         then
             path=${OPTARG}
             pass=$(cat $path 2>/dev/null)
             return 0
-        fi
+        fi 
     else
-        #printf "it's not -f\n"
         pass=$argument
         return 1
     fi
 }
 
 
-#If statement that checks for any errors with the flag letter or argument before validating password.
+#If statement that checks for any errors with the flag letter or argument before validating password, returns 1 if has found an issue.
 function checkOptionErrors {
     if [ $option == ? ]
     then
@@ -108,6 +109,7 @@ function checkOptionErrors {
     fi
 }
 
+#Function that calls all the necessary check functions before executing password valodation.
 function validatePassword {
         if checkIfOption
         then
