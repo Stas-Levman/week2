@@ -16,7 +16,7 @@ NC='\033[0m' #No Color
 
 #Checks if password does not contain at least 1 digit.
 function digitPresent {
-    if ! [[ $pass =~ [1-9] ]]
+    if ! [[ $pass =~ [0-9] ]]
     then
         printf "${RED}Please include at least 1 digit in your password. ${NC}\n"
         valid=1
