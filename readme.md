@@ -11,5 +11,5 @@
 
 #### Usage:
 
-Must run on unix based operating system.
+Must run on unix based operating system.\
 Execute the following code in your terminal: passwordValidator.sh "insert password here"
