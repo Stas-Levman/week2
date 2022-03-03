@@ -79,7 +79,6 @@ function checkIfOption {
     if [[ $argument =~ ^\-.$ ]]
         then
         printf "it's -f\n"
-        #getopts ":f:" option 
         if [ $option == "f" ]
         then
             path=${OPTARG}
@@ -93,7 +92,6 @@ function checkIfOption {
     fi
 }
 
-#checkIfOption
 
 #If statement that checks for any errors with the flag letter or argument before validating password.
 function checkOptionErrors {
@@ -106,7 +104,6 @@ function checkOptionErrors {
         printf "${RED}File could not be found${NC}\n"
         return 1
     else
-        #printf "checkd\n"
         return 0
     fi
 }
@@ -123,24 +120,6 @@ function validatePassword {
         fi
 }
 
-# function validatePassword {
-#     if [ checkIfOption -a checkOptionErrors ]
-#     then
-#         checkPasswordStrength
-#     fi
-#}
-
-# function validatePassword {
-#         if checkIfOption && checkOptionErrors
-#         then
-#             checkPasswordStrength
-#         else
-#             checkPasswordStrength
-#         fi
-# }
-
-
 
 validatePassword
-printf "\nThe option is: $option\nThe # is: $#\nThe OPTARG is: $OPTARG\nThe OPTINT is: $OPTIND\nThe pass is: $argument\nOption or pass: $checkIfOption\n" 
 
