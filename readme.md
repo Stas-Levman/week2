@@ -13,7 +13,7 @@
 
 Must run on unix based operating system.\
 Execute the following code in your terminal in order to validate password from written string in the command line:\
-passwordValidator.sh "insert password here" \ \
+passwordValidator.sh "insert password here"
 
 Execute the following code in your terminal in order to validate password from a file in passed directory:\
 passwordValidator.sh -f "insert path here"
